@@ -11,11 +11,11 @@ const router = (app) => {
 	});
 
 	app.post("/add-lead", (req, res) => {
-		const { name, phoneNumber, chatId } = url.parse(req.url, true).query;
+		const { description, name, phoneNumber, chatId } = url.parse(req.url, true).query;
 
 		TelegramService.sendMessage(
 			chatId,
-			formatLeadToMessage(name, phoneNumber),
+			formatLeadToMessage(name, phoneNumber, description),
 		)
 			.then(() => {
 				ResponseService.success(res, { isSuccess: true });
