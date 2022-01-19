@@ -1,7 +1,7 @@
 const path = require("path");
 const url = require("url");
 const { formatLeadToMessage } = require("../helpers/formatters");
-const ResponseService = require("../services/ResponseService");
+const ResponseService = require("../services/ResponseService/ResponseService");
 
 const TelegramService = require("../services/TelegramService/TelegramService");
 
@@ -10,8 +10,11 @@ const router = (app) => {
 		res.sendFile(path.join(process.cwd(), "/public/index.html"));
 	});
 
-	app.post("/add-lead", (req, res) => {
-		const { description, name, phoneNumber, chatId } = url.parse(req.url, true).query;
+	app.post("/new-lead", (req, res) => {
+		const { description, name, phoneNumber, chatId } = url.parse(
+			req.url,
+			true,
+		).query;
 
 		TelegramService.sendMessage(
 			chatId,

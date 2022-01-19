@@ -13,6 +13,7 @@ const startServer = (port) => {
 	const app = express();
 
 	TelegramService.init();
+
 	setupMiddlewares(app);
 	router(app);
 	systemController(app);

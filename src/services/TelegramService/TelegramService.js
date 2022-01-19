@@ -12,24 +12,11 @@ const startBot = () => {
 					reject(new Error("chatId or text does not exist"));
 			  });
 
-	const sendOptions = (chatId, text = "", options = []) => {
-		bot.telegram.addStickerToSet.sendMessage(chatId, text, {
-			reply_markup: {
-				inline_keyboard: [
-					options.map((key) => ({
-						text: key,
-						callback_data: `analyze${key}`,
-					})),
-				],
-			},
-		});
-	};
-
 	const init = () => {
 		bot.command("start", (ctx) => {
 			bot.telegram.sendMessage(
 				ctx.chat.id,
-				`Привіт, пацани, я kaifui lead bot. id цього чату:${ctx.chat.id}`,
+				`Привіт, друже, я KaifuiLeadBot.\n\nID цього чату: ${ctx.chat.id}`,
 				{},
 			);
 		});
@@ -39,7 +26,6 @@ const startBot = () => {
 
 	return {
 		sendMessage,
-		sendOptions,
 		init,
 	};
 };

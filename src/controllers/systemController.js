@@ -1,5 +1,5 @@
 const os = require("os");
-const ResponseService = require("../services/ResponseService");
+const ResponseService = require("../services/ResponseService/ResponseService");
 const { SYSTEM_CONTROLLER_ROUTES } = require("../constants/routes");
 
 const getSystemInfo = (req, res, next) => {
