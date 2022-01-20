@@ -5,12 +5,11 @@ const processEnv = require("../../constants/env");
 const startBot = () => {
 	const bot = new Telegraf(processEnv.TELEGRAM_API_TOKEN);
 
-	const sendMessage = (chatId, text) =>
-		chatId && text
-			? bot.telegram.sendMessage(chatId, text)
-			: new Promise((resolve, reject) => {
-					reject(new Error("chatId or text does not exist"));
-			  });
+	const sendMessage = async (chatId, text) => {
+		const response = await bot.telegram.sendMessage(chatId, text);
+
+		return response;
+	};
 
 	const init = () => {
 		bot.command("start", (ctx) => {

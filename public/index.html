@@ -1,11 +1,56 @@
 <!DOCTYPE html>
 <html lang="ua">
-    <head>
-        <meta charset="utf-8" />
-        <meta name="viewport" content="width=device-width, initial-scale=1" />
-        <title>kaifui lead bot open for everyone</title>
-    </head>
-    <body>
-        <h1>kafui lead bot</h1>
-    </body>
+	<head>
+		<meta charset="utf-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1" />
+		<title>kaifui lead bot open for everyone</title>
+		<link
+			href="https://fonts.googleapis.com/css2?family=Lato:wght@400;600;700&display=swap"
+			rel="stylesheet"
+		/>
+		<link rel="stylesheet" href="./styles.css" />
+	</head>
+	<body style="margin: 0">
+		<article class="background">
+			<section class="container section">
+				<h1 class="h1">
+					kafui lead bot - бот, що допоможе збирати лідів без власного
+					backend-у
+				</h1>
+			</section>
+			<section class="container">
+				<h2 class="regular">
+					Скористатися цим ботом можна у два прості кроки:
+				</h2>
+				<ul>
+					<li>
+						<h3 class="regular">1) Дізнатися ID Telegram чату</h3>
+						<p>
+							Щоб дізнатися ID чату у якому ви б хотіли отримувати
+							інформацію про нових лідів. Для цього потрібно
+							додати бота в чат (<a
+								href="https://t.me/kaifui_lead_bot"
+								>посилання на бота</a
+							>) та відправити команду "/start"
+						</p>
+					</li>
+					<li>
+						<h3 class="regular">
+							2) Надіслати POST запит за адресою
+						</h3>
+						<p>
+							За адресою
+							<a
+								href="ttps://stark-dusk-56821.herokuapp.com/new-lead?chatId=0&name=Ivan&phoneNumber=17&description=New"
+								>приклад запиту</a
+							>
+							обов'язково вказавши chatId та phoneNumber нового
+							ліда.
+						</p>
+					</li>
+				</ul>
+				<h3 class="regular">Насолоджуйтесь :)</h3>
+			</section>
+		</article>
+	</body>
 </html>

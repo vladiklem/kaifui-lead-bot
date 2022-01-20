@@ -1,3 +1,4 @@
+const { StatusCodes } = require("http-status-codes");
 const path = require("path");
 const url = require("url");
 const { formatLeadToMessage } = require("../helpers/formatters");
@@ -16,16 +17,24 @@ const router = (app) => {
 			true,
 		).query;
 
-		TelegramService.sendMessage(
-			chatId,
-			formatLeadToMessage(name, phoneNumber, description),
-		)
-			.then(() => {
-				ResponseService.success(res, { isSuccess: true });
-			})
-			.catch((err) => {
-				ResponseService.failure(res, err);
-			});
+		if (phoneNumber && chatId) {
+			TelegramService.sendMessage(
+				chatId,
+				formatLeadToMessage(name, phoneNumber, description),
+			)
+				.then((response) => {
+					ResponseService.success(res, response);
+				})
+				.catch((err) => {
+					ResponseService.failure(res, err);
+				});
+		} else {
+			ResponseService.failure(
+				res,
+				"Invalid phoneNumber or chat ID.",
+				StatusCodes.BAD_REQUEST,
+			);
+		}
 	});
 };
 

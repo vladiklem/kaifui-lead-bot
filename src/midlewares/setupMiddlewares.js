@@ -1,4 +1,6 @@
 const bodyParser = require("body-parser");
+const path = require("path");
+const express = require("express");
 const cors = require("cors");
 const helmet = require("helmet");
 const errorHandler = require("./errorHandler");
@@ -9,6 +11,7 @@ const setupMiddlewares = (app) => {
 	app.use(helmet());
 	app.use(errorHandler);
 	app.use(cors());
+	app.use(express.static(path.join(process.cwd(), "public")));
 };
 
 module.exports = setupMiddlewares;

@@ -1,22 +1,21 @@
 const { StatusCodes } = require("http-status-codes");
 
-const startReponseService = () => {
+const startResponsService = () => {
 	const success = (res, data = {}) => {
 		res.status(StatusCodes.OK).send(
-			JSON.stringify(res.locals.data || data),
+			JSON.stringify({
+				data: res.locals.data || data,
+				error: null,
+				ok: true,
+			}),
 		);
 	};
 
-	const failure = (res, error) => {
-		res.status(StatusCodes.INTERNAL_SERVER_ERROR).send(
-			JSON.stringify({ error }),
-		);
+	const failure = (res, error, code = StatusCodes.INTERNAL_SERVER_ERROR) => {
+		res.status(code).send({ data: null, error, ok: false });
 	};
 
-	return {
-		success,
-		failure,
-	};
+	return { success, failure };
 };
 
-module.exports = startReponseService();
+module.exports = startResponsService();
